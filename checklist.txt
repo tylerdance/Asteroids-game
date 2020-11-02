@@ -1,0 +1,18 @@
+- canvas for game play
+
+- create player
+    - constructor function
+
+ projectiles
+    - constructor function
+
+- spawn asteroids at random
+
+- start game landing page\
+
+- score board
+
+- instructions
+
+- asteroid explosions
+

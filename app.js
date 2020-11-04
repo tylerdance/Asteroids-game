@@ -45,6 +45,7 @@ class Shot {
     }
     // velocity function
     update() {
+        this.render();
         this.x = this.x + this.velocity.x;
         this.y = this.y + this.velocity.y;
     }
@@ -60,21 +61,33 @@ player.render();
 const shot = new Shot(x, y, 5, 'orange',
     {
         x: 1,
-        y: 1
+        y: 2
     }
 );
+
+const projectiles = []
 
 // animation function
 function animate() {
     requestAnimationFrame(animate)
-    shot.render();
-    shot.update();
+    projectiles.forEach((shot) => {
+        shot.update();
+    })
 }
-animate()
 
 // click
 canvas.addEventListener('click', (e) => {
-    console.log(e);
     // push new projectile?
+    const angle = Math.atan2(e.pageY - y, e.pageX - x)
+    console.log(angle);
+    projectiles.push(new Shot(canvas.width / 2, canvas.height / 2, 5, 'orange',
+    {
+        x: 1,
+        y: 1
+    })
+    )
     // angle - Math.cos and Math.sin
+    console.log(e);
 })
+
+animate()

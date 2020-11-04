@@ -71,6 +71,8 @@ const projectiles = []
 // animation function
 function animate() {
     requestAnimationFrame(animate)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    player.render();
     projectiles.forEach((shot) => {
         shot.update();
     })
@@ -80,14 +82,13 @@ function animate() {
 canvas.addEventListener('click', (e) => {
     // push new projectile?
     const angle = Math.atan2(e.pageY - y, e.pageX - x)
-    console.log(angle);
-    projectiles.push(new Shot(canvas.width / 2, canvas.height / 2, 5, 'orange',
-    {
-        x: 1,
-        y: 1
-    })
+    const speed = 25
+    projectiles.push(new Shot(x, y, 5, 'orange',
+        {
+            x: Math.cos(angle) * speed,
+            y: Math.sin(angle) * speed
+        })
     )
-    // angle - Math.cos and Math.sin
     console.log(e);
 })
 

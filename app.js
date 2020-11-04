@@ -65,6 +65,7 @@ const shot = new Shot(x, y, 5, 'orange',
     }
 );
 
+// projectiles array
 const projectiles = []
 
 // animation function

@@ -6,11 +6,9 @@ console.log(ctx);
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-
 // const computerStyle = getComputedStyle(canvas)
 // const height = computerStyle.height;
 // const width = computerStyle.width;
-
 
 // player
 class Player {
@@ -28,8 +26,9 @@ class Player {
     }
 }
 
+
 // projectiles
-class Projectile {
+class Shot {
     constructor(x, y, radius, color, velocity) {
         this.x = x;
         this.y = y;
@@ -39,22 +38,43 @@ class Projectile {
     }
     render() {
         ctx.beginPath();
+        // temp player circle - replace with spaceship image later
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
     }
+    // velocity function
+    update() {
+        this.x = this.x + this.velocity.x;
+        this.y = this.y + this.velocity.y;
+    }
+    // refresh function ?
 }
-
-canvas.addEventListener('click', (e) => {
-    console.log(e);
-
-    // const projectile = 
-})
 
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-const player = new Player(x, y, 10, 'black')
-player.render()
+const player = new Player(x, y, 10, 'black');
+player.render();
 
-console.log(player);
+const shot = new Shot(x, y, 5, 'orange',
+    {
+        x: 1,
+        y: 1
+    }
+);
+
+// animation function
+function animate() {
+    requestAnimationFrame(animate)
+    shot.render();
+    shot.update();
+}
+animate()
+
+// click
+canvas.addEventListener('click', (e) => {
+    console.log(e);
+    // push new projectile?
+    // angle - Math.cos and Math.sin
+})

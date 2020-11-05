@@ -10,6 +10,8 @@ canvas.height = innerHeight;
 // const height = computerStyle.height;
 // const width = computerStyle.width;
 
+const scoreEl = document.querySelector('#score-count')
+
 // Player
 class Player {
     constructor(x, y, radius, color) {
@@ -95,25 +97,28 @@ const shot = new Shot(x, y, 5, 'orange',
 const projectiles = []
 const asteroids = []
 
+
 function spawnAsteroid() {
     setInterval(() => {
         const radius = 30
         const x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
         const y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
-        const color = 'green'
+        const color = 'red'
         const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x)
-        const speed = 25
+        const speed = 10
         const velocity = {
             x: Math.cos(angle) * speed,
             y: Math.sin(angle) * speed
         }
 
         asteroids.push(new Asteroid(x, y, radius, color, velocity))
-        console.log(asteroids);
+        // console.log(asteroids);
     }, 1000)
 }
 
-// animation function
+let score = 0
+
+// let animationFrame
 function animate() {
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -121,10 +126,33 @@ function animate() {
     projectiles.forEach((shot) => {
         shot.update();
     })
-    asteroids.forEach((Asteroid) => {
-        Asteroid.update()
+    asteroids.forEach((asteroid, index) => {
+        asteroid.update()
+        
+        //win
+        if (score = 50) {
+            cancelAnimationFrame(animate)
+        }
+
+        // test distance between shot and target -> Math.hypot()
+        projectiles.forEach((shot, shotIndex) => {
+            const distance = Math.hypot(shot.x - asteroid.x, shot.y - asteroid.y)
+            // console.log(distance);
+            if (distance < shot.radius + asteroid.radius) {
+                asteroids.splice(index, 1)
+                projectiles.splice(shotIndex, 1)
+                // console.log(index);
+                score += 25
+                scoreEl.textContent = score
+            }
+        })
     })
 }
+
+// function missionComplete() {
+//     const hit = (distance < shot.radius + asteroid.radius) * 10
+//     console.log(hit, 'win');
+// }
 
 // click
 canvas.addEventListener('click', (e) => {

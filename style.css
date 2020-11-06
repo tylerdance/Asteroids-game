@@ -7,3 +7,23 @@ body {
     position: fixed;
     margin: 10px;
 }
+
+
+.start-game {
+    display: flex;
+    justify-content: center;
+}
+
+.win {
+    display: flex;
+    justify-content: center;
+}
+
+#restart {
+    width: 100px;
+    height: 20px;
+}
+                
+.hidden {
+    display: none;
+}

@@ -12,12 +12,29 @@
     <div id="score-board">
         <span class="fixed text-black select-none">Score: </span><span id="score-count">0</span>
     </div>
-    
-    <div class="container">
+
+    <div class="container hidden">
         <canvas id="game"></canvas>
     </div>
 
-    <!-- <script src="scratch.js"></script> -->
+    <div class="start-game">
+        <div>
+            <!-- <h1 id="points-total">0</h1>
+            <p id="points">Points</p> -->
+            <h2>OBJECTIVE: DESTROY 10 ASTEROIDS BEFORE IMPACT</h2>
+            <div>
+                <button id="start-button">START GAME</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fail hidden">MISSION FAILED</div>
+
+    <div class="win hidden">
+        <h1>MISSION COMPLETE</h1>
+        <button id="restart">PLAY AGAIN</button>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>

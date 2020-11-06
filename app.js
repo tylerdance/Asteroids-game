@@ -179,9 +179,10 @@ document.querySelector('#start-button').addEventListener('click', () => {
     animate()
     spawnAsteroid()
     document.querySelector('.container').classList.remove('hidden')
+    document.querySelector('.start-game').classList.add('hidden')
 })
 
-// restart game
+// reset game
 // document.querySelector('#restart').addEventListener('click', () => {
 //     animate()
 //     spawnAsteroid()

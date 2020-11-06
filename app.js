@@ -139,13 +139,14 @@ function animate() {
                 if (distance < shot.radius + asteroid.radius) {
                     asteroids.splice(index, 1)
                     projectiles.splice(shotIndex, 1)
-                    // console.log(index);
+
+                    // score
                     score += 20
                     scoreEl.textContent = score
                 }
             })
         })
-        // asteroids.forEach((asteroid, index) => {
+        // lose condition
         for (let i = 0; i < asteroids.length; i++) {
             const distance = Math.hypot(player.x - asteroids[i].x, player.y - asteroids[i].y)
             if (distance < player.radius + asteroids[i].radius) {
@@ -154,6 +155,7 @@ function animate() {
             }
         }
         requestAnimationFrame(animate)
+    // win condition
     } else if (score > 100) {
         document.querySelector('.win').classList.remove('hidden')
     }
@@ -162,7 +164,6 @@ function animate() {
 
 // fire on click
 canvas.addEventListener('click', (e) => {
-    // push new projectile?
     const angle = Math.atan2(e.pageY - y, e.pageX - x)
     const speed = 25
     const velocity = {
@@ -173,8 +174,16 @@ canvas.addEventListener('click', (e) => {
     )
 })
 
+// start game
 document.querySelector('#start-button').addEventListener('click', () => {
     animate()
     spawnAsteroid()
     document.querySelector('.container').classList.remove('hidden')
 })
+
+// restart game
+// document.querySelector('#restart').addEventListener('click', () => {
+//     animate()
+//     spawnAsteroid()
+//     document.querySelector('.container').classList.remove('hidden')
+// })

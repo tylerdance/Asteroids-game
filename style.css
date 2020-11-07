@@ -24,7 +24,7 @@ body {
 }
    
 .fail {
-    display: none;
+    display: flex;
 }
 
 .hidden {

@@ -83,26 +83,45 @@ class Asteroid {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-const player = new Player(x, y, 10, 'black');
-player.render();
-
-const shot = new Shot(x, y, 5, 'orange',
+// player.render();
+let player = new Player(x, y, 10, 'black');
+let shot = new Shot(x, y, 5, 'orange',
     {
         x: 1,
         y: 2
     }
 );
+let projectiles = []
+let asteroids = []
 
-// projectiles array
-const projectiles = []
-const asteroids = []
 
+function init() {
+    player = new Player(x, y, 10, 'black');
+    shot = new Shot(x, y, 5, 'orange',
+        {
+            x: 1,
+            y: 2
+        }
+    );
+    projectiles = []
+    asteroids = []
+}
 
 function spawnAsteroid() {
     setInterval(() => {
         const radius = 30
-        const x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
-        const y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+
+        let x 
+        let y
+
+        if (Math.random() < 0.5) {
+            x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
+            y = Math.random() * canvas.height
+            // y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+        } else {
+            x = Math.random() * canvas.width + radius
+            y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+        }
         const color = 'red'
         const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x)
         const speed = 10
@@ -176,14 +195,16 @@ canvas.addEventListener('click', (e) => {
 
 // start game
 document.querySelector('#start-button').addEventListener('click', () => {
+    init()
     animate()
     spawnAsteroid()
     document.querySelector('.container').classList.remove('hidden')
     document.querySelector('.start-game').classList.add('hidden')
 })
 
-reset game
+// reset game
 document.querySelector('#restart').addEventListener('click', () => {
+    init()
     animate()
     spawnAsteroid()
     document.querySelector('.container').classList.remove('hidden')

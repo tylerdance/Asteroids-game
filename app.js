@@ -181,7 +181,6 @@ function animate() {
     } else if (score >= 100) {
         // document.querySelector('#win').classList.remove('hidden')
         document.querySelector('#win').style.display = "block"
-        document.querySelector('#score-count').textContent = 0
         return
     }
 }
@@ -210,15 +209,30 @@ document.querySelector('#start-button').addEventListener('click', () => {
     document.querySelector('.start-game').style.display = "none"
 })
 
-// reset game
-document.querySelector('#restart').addEventListener('click', () => {
+// reset game win
+document.querySelector('#restart-win').addEventListener('click', () => {
+    score = 0
+    console.log(score)
+    document.querySelector('#score-count').textContent = 0
     init()
     animate()
     spawnAsteroid()
-    // document.querySelector('#score-count').textContent = 0
-
     // document.querySelector('.container').classList.remove('hidden')
-    document.querySelector('#fail').style.display = "none"
     document.querySelector('#win').style.display = "none"
-    // document.querySelector('#control').style.display = "block"
+    document.querySelector('#fail').style.display = "none"
+    document.querySelector('#control').style.display = "block"
+})
+
+// reset game fail
+document.querySelector('#restart-fail').addEventListener('click', () => {
+    score = 0
+    console.log(score)
+    document.querySelector('#score-count').textContent = 0
+    init()
+    animate()
+    spawnAsteroid()
+    // document.querySelector('.container').classList.remove('hidden')
+    document.querySelector('#win').style.display = "none"
+    document.querySelector('#fail').style.display = "none"
+    document.querySelector('#control').style.display = "block"
 })

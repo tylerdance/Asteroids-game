@@ -6,7 +6,7 @@ Single-player mini shooter optimized for projectile spamming!
 
 - Destroy 6 before impact.
 
-- If you can manage to destroy 5 before impact, your mission complete message will be delivered promptly.
+- If you can manage to destroy 7 before impact, your mission complete message will be delivered promptly.
 
 ## Instructions
 

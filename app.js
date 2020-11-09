@@ -110,7 +110,7 @@ function init() {
 
 function spawnAsteroid() {
     setInterval(() => {
-        const radius = Math.random() * (30 - 8) + 8
+        const radius = Math.random() * (35 - 8) + 8
 
         let x 
         let y
@@ -125,7 +125,7 @@ function spawnAsteroid() {
         }
         const color = `hsl(${Math.random() * 360}, 50%, 50%)`
         const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x)
-        const speed = 3
+        const speed = 4
         const velocity = {
             x: Math.cos(angle) * speed,
             y: Math.sin(angle) * speed
@@ -177,7 +177,7 @@ function animate() {
         }
         requestAnimationFrame(animate)
     // win condition
-    } else if (score >= 6) {
+    } else if (score >= 7) {
         // document.querySelector('#win').classList.remove('hidden')
         document.querySelector('#win').style.display = "block"
         return

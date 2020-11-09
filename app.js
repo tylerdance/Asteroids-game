@@ -198,7 +198,7 @@ canvas.addEventListener('click', (e) => {
 })
 
 // start game
-document.querySelector('#start-button').addEventListener('click', () => {
+document.querySelector('.start-button').addEventListener('click', () => {
     init()
     animate()
     spawnAsteroid()

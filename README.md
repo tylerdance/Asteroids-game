@@ -2,11 +2,15 @@
 
 Single-player mini shooter optimized for projectile spamming!
 
+Built with Javascript
+
+Incorporates triggonometric calculations
+
 ## Objective
 
-- Destroy 6 before impact.
+- Destroy 7 asteroids before impact
 
-- If you can manage to destroy 7 before impact, your mission complete message will be delivered promptly.
+- If you can manage to destroy 7 before impact, your mission complete message will be delivered promptly
 
 ## Instructions
 
@@ -15,6 +19,12 @@ Single-player mini shooter optimized for projectile spamming!
 - Fire projectiles with mouse click
 
 - Spam ammo as needed
+
+- Click "play again" after a win or lose to increase difficulty
+
+
+- Designed for larger screens and external mouse
+
 
 ### Unpacking the code
 

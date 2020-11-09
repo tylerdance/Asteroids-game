@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 
 const ctx = canvas.getContext('2d');
-console.log(ctx);
+// console.log(ctx);
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
@@ -141,7 +141,7 @@ let score = 0
 
 // let animationFrame
 function animate() {
-    if (score < 100) {
+    if (score < 7) {
         // requestAnimationFrame(animate)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         player.render();
@@ -161,7 +161,7 @@ function animate() {
                     projectiles.splice(shotIndex, 1)
 
                     // score
-                    score += 20
+                    score += 1
                     scoreEl.textContent = score
                 }
             })
@@ -177,7 +177,7 @@ function animate() {
         }
         requestAnimationFrame(animate)
     // win condition
-    } else if (score >= 100) {
+    } else if (score >= 6) {
         // document.querySelector('#win').classList.remove('hidden')
         document.querySelector('#win').style.display = "block"
         return

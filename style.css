@@ -5,19 +5,27 @@ body {
 
 #score-board {
     position: fixed;
-    margin: 10px;
-    color: white;
+    margin: 50px;
+    color: #ffffff;
+    font-size: 70px;
 }
 
 .start-game {
     color: orange;
     display: flex;
-    justify-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: 'Rock Salt', cursive;
 }
 
 #win {
     display: none;
-    color: orange;
+    color:#03fc20;
+    font-size: 30px;
+    font-family: 'Rock Salt', cursive;
+
 
     /* display: flex;
     justify-content: center; */
@@ -27,12 +35,18 @@ body {
     width: 100px;
     height: 20px;
     color: orange;
+    font-size: 30px;
+    font-family: 'Rock Salt', cursive;
+
 
 }
    
 #fail {
     display: none;
-    color: orange;
+    color: red;
+    font-size: 30px;
+    font-family: 'Rock Salt', cursive;
+
 
 
     /* display: flex;

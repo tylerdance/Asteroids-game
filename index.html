@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
     <title>ASTEROIDS</title>
 </head>
 
@@ -24,9 +25,10 @@
         <div>
             <!-- <h1 id="points-total">0</h1>
             <p id="points">Points</p> -->
-            <h1>ASTEROIDS</h1>
-            <h2 id="instructions">OBJECTIVE: DESTROY 7 ASTEROIDS BEFORE IMPACT</h2>
+            <h1 id="title">ASTEROIDS</h1>
+            <h2 id="instructions"><span id="objective">OBJECTIVE:</span> DESTROY 7 ASTEROIDS BEFORE IMPACT</h2>
             <h3>POINT + CLICK TO FIRE</h3>
+            <h3>CLICK "PLAY AGAIN" TO ADVANCE TO NEXT LEVEL</h3>
             <div>
                 <button class="start-button btn-3"><span>START GAME</span></button>
             </div>
@@ -35,12 +37,12 @@
 
     <div id="fail" class="hidden">
         <h1>MISSION FAILED</h1>
-        <button id="restart-fail">PLAY AGAIN</button>
+        <button class ="btn-3" id="restart-fail">PLAY AGAIN</button>
     </div>
 
     <div id="win" class="hidden">
         <h1>MISSION COMPLETE</h1>
-        <button id="restart-win">PLAY AGAIN</button>
+        <button class="btn-3" id="restart-win">PLAY AGAIN</button>
     </div>
 
     <script src="app.js"></script>

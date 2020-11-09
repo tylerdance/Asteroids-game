@@ -96,7 +96,7 @@ let asteroids = []
 
 function init() {
     player = new Player(x, y, 10, 'white');
-    shot = new Shot(x, y, 5, '`hsl(${Math.random() * 360}, 50%, 50%)`',
+    shot = new Shot(x, y, 5, `hsl(${Math.random() * 360}, 50%, 50%)`,
         {
             x: 1,
             y: 2
@@ -202,7 +202,6 @@ document.querySelector('.start-button').addEventListener('click', () => {
     init()
     animate()
     spawnAsteroid()
-    // document.querySelector('.container').classList.remove('hidden')
     document.querySelector('#control').style.display = "flex"
     // document.querySelector('.start-game').classList.add('hidden')
     document.querySelector('.start-game').style.display = "none"
@@ -216,7 +215,7 @@ document.querySelector('#restart-win').addEventListener('click', () => {
     init()
     animate()
     spawnAsteroid()
-    // document.querySelector('.container').classList.remove('hidden')
+    // document.querySelector('.start-game').classList.remove('hidden')
     document.querySelector('#win').style.display = "none"
     document.querySelector('#fail').style.display = "none"
     document.querySelector('#control').style.display = "block"

@@ -40,7 +40,6 @@ class Shot {
     }
     render() {
         ctx.beginPath();
-        // temp player circle - replace with spaceship image later
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
@@ -84,8 +83,8 @@ const x = canvas.width / 2
 const y = canvas.height / 2
 
 // player.render();
-let player = new Player(x, y, 10, 'black');
-let shot = new Shot(x, y, 5, 'orange',
+let player = new Player(x, y, 10, 'white');
+let shot = new Shot(x, y, 5, `hsl(${Math.random() * 360}, 50%, 50%)`,
     {
         x: 1,
         y: 2
@@ -96,8 +95,8 @@ let asteroids = []
 
 
 function init() {
-    player = new Player(x, y, 10, 'black');
-    shot = new Shot(x, y, 5, 'orange',
+    player = new Player(x, y, 10, 'white');
+    shot = new Shot(x, y, 5, '`hsl(${Math.random() * 360}, 50%, 50%)`',
         {
             x: 1,
             y: 2
@@ -124,7 +123,7 @@ function spawnAsteroid() {
             x = Math.random() * canvas.width + radius
             y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
         }
-        const color = 'red'
+        const color = `hsl(${Math.random() * 360}, 50%, 50%)`
         const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x)
         const speed = 3
         const velocity = {

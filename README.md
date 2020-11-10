@@ -42,9 +42,20 @@ canvas.addEventListener('click', (e) => {
 })
 ```
 
-Using `Math.atan2()` I passed the x and y coordinates of the click location on the page to find the angle relative the player. Then I used `Math.cos` and `Math.sin` to determine the velocity of the projectiles.
+Using `Math.atan2()`, I passed the x and y coordinates of the click location on the page to find the angle relative the player. Once the angle was established, I used `Math.cos` and `Math.sin` to find the cosine and sin of the triangle and then set velocity.
 
+Fail condition was established using the `Math.hypot()` function, which I used to find the distance between the player and the incoming asteroids.
+
+```javascript
+for (let i = 0; i < asteroids.length; i++) {
+            const distance = Math.hypot(player.x - asteroids[i].x, player.y - asteroids[i].y)
+            if (distance < player.radius + asteroids[i].radius) {
+                document.querySelector('#fail').style.display = "block"
+                return
+            }
+        }
+```
 
 ### Pre-build Wireframe
 
-![picture](img/asteroids-wireframe)
+![picture](./img/asteroids-wireframe.png)

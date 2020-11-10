@@ -1,8 +1,6 @@
 const canvas = document.querySelector('canvas');
-
 const ctx = canvas.getContext('2d');
 // console.log(ctx);
-
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
@@ -28,7 +26,6 @@ class Player {
     }
 }
 
-
 // Projectiles
 class Shot {
     constructor(x, y, radius, color, velocity) {
@@ -44,13 +41,13 @@ class Shot {
         ctx.fillStyle = this.color;
         ctx.fill();
     }
-    // velocity function
+    // velocity function - add x velocity to x coord. and y vel to y coord.
     update() {
         this.render();
+        // current position + x and y velocity
         this.x = this.x + this.velocity.x;
         this.y = this.y + this.velocity.y;
     }
-    // refresh function ?
 };
 
 // Asteroids
@@ -78,7 +75,6 @@ class Asteroid {
     // refresh function ?
 }
 
-
 const x = canvas.width / 2
 const y = canvas.height / 2
 
@@ -93,7 +89,6 @@ let shot = new Shot(x, y, 5, `hsl(${Math.random() * 360}, 50%, 50%)`,
 let projectiles = []
 let asteroids = []
 
-
 function init() {
     player = new Player(x, y, 10, 'white');
     shot = new Shot(x, y, 5, `hsl(${Math.random() * 360}, 50%, 50%)`,
@@ -104,8 +99,6 @@ function init() {
     );
     projectiles = []
     asteroids = []
-    // score = 0
-    // scoreEl.textContent = 0
 }
 
 function spawnAsteroid() {
@@ -118,7 +111,6 @@ function spawnAsteroid() {
         if (Math.random() < 0.5) {
             x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
             y = Math.random() * canvas.height
-            // y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
         } else {
             x = Math.random() * canvas.width + radius
             y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
@@ -130,16 +122,12 @@ function spawnAsteroid() {
             x: Math.cos(angle) * speed,
             y: Math.sin(angle) * speed
         }
-
         asteroids.push(new Asteroid(x, y, radius, color, velocity))
-        // console.log(asteroids);
     }, 1000)
 }
 
 let score = 0
-// let hasWon = false
 
-// let animationFrame
 function animate() {
     if (score < 7) {
         // requestAnimationFrame(animate)
@@ -151,11 +139,9 @@ function animate() {
         asteroids.forEach((asteroid, index) => {
             asteroid.update()
            
-    
-            // test distance between shot and target -> Math.hypot()
+            // hit detection - test distance between shot and target -> Math.hypot()
             projectiles.forEach((shot, shotIndex) => {
                 const distance = Math.hypot(shot.x - asteroid.x, shot.y - asteroid.y)
-                // console.log(distance);
                 if (distance < shot.radius + asteroid.radius) {
                     asteroids.splice(index, 1)
                     projectiles.splice(shotIndex, 1)
@@ -170,7 +156,6 @@ function animate() {
         for (let i = 0; i < asteroids.length; i++) {
             const distance = Math.hypot(player.x - asteroids[i].x, player.y - asteroids[i].y)
             if (distance < player.radius + asteroids[i].radius) {
-                // document.querySelector('#fail').classList.remove('hidden')
                 document.querySelector('#fail').style.display = "block"
                 return
             }
@@ -178,12 +163,10 @@ function animate() {
         requestAnimationFrame(animate)
     // win condition
     } else if (score >= 7) {
-        // document.querySelector('#win').classList.remove('hidden')
         document.querySelector('#win').style.display = "block"
         return
     }
 }
-
 
 // fire on click
 canvas.addEventListener('click', (e) => {
@@ -203,7 +186,6 @@ document.querySelector('.start-button').addEventListener('click', () => {
     animate()
     spawnAsteroid()
     document.querySelector('#control').style.display = "flex"
-    // document.querySelector('.start-game').classList.add('hidden')
     document.querySelector('.start-game').style.display = "none"
 })
 
@@ -215,7 +197,6 @@ document.querySelector('#restart-win').addEventListener('click', () => {
     init()
     animate()
     spawnAsteroid()
-    // document.querySelector('.start-game').classList.remove('hidden')
     document.querySelector('#win').style.display = "none"
     document.querySelector('#fail').style.display = "none"
     document.querySelector('#control').style.display = "block"
@@ -229,7 +210,6 @@ document.querySelector('#restart-fail').addEventListener('click', () => {
     init()
     animate()
     spawnAsteroid()
-    // document.querySelector('.container').classList.remove('hidden')
     document.querySelector('#win').style.display = "none"
     document.querySelector('#fail').style.display = "none"
     document.querySelector('#control').style.display = "block"

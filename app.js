@@ -72,7 +72,6 @@ class Asteroid {
         this.x = this.x + this.velocity.x;
         this.y = this.y + this.velocity.y;
     }
-    // refresh function ?
 }
 
 const x = canvas.width / 2
@@ -129,7 +128,7 @@ function spawnAsteroid() {
 let score = 0
 
 function animate() {
-    if (score < 7) {
+    if (score < 100) {
         // requestAnimationFrame(animate)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         player.render();
@@ -162,10 +161,11 @@ function animate() {
         }
         requestAnimationFrame(animate)
     // win condition
-    } else if (score >= 7) {
-        document.querySelector('#win').style.display = "block"
-        return
-    }
+    } 
+    // else if (score >= 15) {
+    //     document.querySelector('#win').style.display = "block"
+    //     return
+    // }
 }
 
 // fire on click
@@ -187,6 +187,7 @@ document.querySelector('.start-button').addEventListener('click', () => {
     spawnAsteroid()
     document.querySelector('#control').style.display = "flex"
     document.querySelector('.start-game').style.display = "none"
+    document.querySelector('#score-board').style.display = "block"
 })
 
 // reset game win

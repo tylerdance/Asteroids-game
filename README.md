@@ -1,10 +1,4 @@
-# Asteroids by Tyler Dance
-
-Single-player mini shooter optimized for projectile spamming!
-
-Built with Javascript
-
-Incorporates triggonometric calculations
+# Asteroids
 
 ## Objective
 
@@ -25,7 +19,7 @@ Incorporates triggonometric calculations
 - Designed for larger screens and external mouse
 
 
-### Unpacking the code
+### Code
 
 Asteroids was built with Javascript. The core functionality was built with constructor functions to render the player and the asteroids, and animation functions to bring them to life. Building was a challenge, as I was unfamiliar with the triggonometry calculations required to calculate the angles between the projectiles and the asteroids, and the distance between the player and the asteroids. Here's a code snippet of the fire projectile function:
 
